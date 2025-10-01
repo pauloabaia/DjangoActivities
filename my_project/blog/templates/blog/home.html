@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if flag == "is_logged_in"%}
+    
+    <h1>
+        Olá, {{nome}}! Você foi rebaixado para pano I.
+    </h1>
+
+    {% endif %}
+
+    <h1>
+        Bem vindo
+    </h1>
+
+    {% if idade >= 18%}
+        <p> Maior de idade <p>
+    
+    {% else%}
+         <p> Menor de idade <p>   
+
+    {% endif %}
+
+
+    {% if role == "admin"  %}
+        <p> admin mano <p>
+    
+    {% elif role == "user" %}
+        <p> user mano<p>
+    {% elif role == "vagabundo" %}
+        <p> vagabundo mano <p>
+    {% else %}
+        <p> nao é nada que temos<p>
+    {% endif %}
+
+    <p>Numero: {{numero}} x 2 = {{numero2}}</p>
+    <p>Data de hoje: {{now|date:"d/m/y"}}
+
+     <h2> Produtos: </h2>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empregado in empregados  %}
+                    <tr>
+                        <td> {{forloop.counter}} </td>
+                        <td>{{empregado.nome}}</td>
+                        <td>{{empregado.cargo}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <body>
+                <h2>Página de Contato</h2>
+                <a href="{% url "contato" %}">Entre em contato</a>
+            </body>
+    
+</body>
+</html>
